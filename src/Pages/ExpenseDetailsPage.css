@@ -1,0 +1,305 @@
+.expense-details-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn-back {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background: #e5e7eb;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: #d1d5db;
+  transform: translateX(-4px);
+}
+
+.details-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.details-card.income {
+  border-left: 6px solid #10b981;
+  background: linear-gradient(to right, #f0fdf4, #fff);
+}
+
+.details-card.expense {
+  border-left: 6px solid #ef4444;
+  background: linear-gradient(to right, #fef2f2, #fff);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.category-section {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.category-text h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1f2937;
+}
+
+.type-badge {
+  margin: 5px 0 0 0;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.details-card.income .type-badge {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.details-card.expense .type-badge {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+.amount-display {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.amount-display.income {
+  color: #10b981;
+}
+
+.amount-display.expense {
+  color: #ef4444;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-item label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 16px;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.detail-item .amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.detail-item .transaction-id {
+  font-family: 'Courier New', monospace;
+  background: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.detail-item .description {
+  background: #f9fafb;
+  padding: 12px;
+  border-left: 3px solid #3b82f6;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 2px solid #ef4444;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.additional-info {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.additional-info h3 {
+  margin: 0 0 20px 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.additional-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.additional-info li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.additional-info span {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.additional-info strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.not-found-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  text-align: center;
+  padding: 20px;
+}
+
+.not-found-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.not-found-message h2 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: #1f2937;
+}
+
+.not-found-message p {
+  margin: 0 0 30px 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .expense-details-page {
+    padding: 15px;
+  }
+
+  .details-card {
+    padding: 20px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .category-emoji {
+    font-size: 40px;
+  }
+
+  .category-text h1 {
+    font-size: 24px;
+  }
+
+  .amount-display {
+    font-size: 28px;
+    text-align: left;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+  }
+}

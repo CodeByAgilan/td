@@ -1,0 +1,53 @@
+.calendar-day {
+  aspect-ratio: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  background: white;
+  position: relative;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-number {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1f2937;
+}
+
+.day-indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  flex-grow: 1;
+}
+
+.indicator {
+  padding: 2px 4px;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator.income-indicator {
+  background: #d1fae5;
+  color: #065f46;
+  border-left: 3px solid #10b981;
+}
+
+.indicator.expense-indicator {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border-left: 3px solid #ef4444;
+}
+
+.amount {
+  font-size: 9px;
+  font-weight: 600;
+}
