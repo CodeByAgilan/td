@@ -1,19 +1,19 @@
 import React from 'react';
 import { useExpenseContext } from '../../Context/Expensecontext';
-import { isMonthDisabled } from '../../utils/dateHelpers';
+import { getCurrentYear, getAvailableMonths } from '../../utils/dateHelpers';
 import './YearSelector.css';
 
 const YearSelector = () => {
   const { selectedYear, setSelectedYear, selectedMonth, setSelectedMonth } = useExpenseContext();
 
-  const currentYear = new Date().getFullYear();
-  const years = [currentYear - 2, currentYear - 1, currentYear];
+  const currentYear = getCurrentYear();
+  const years = [currentYear - 2, currentYear - 1, currentYear, currentYear + 1];
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
-    // Reset to valid month if current month is disabled for new year
-    if (isMonthDisabled(year, selectedMonth)) {
-      setSelectedMonth(0);
+    const availableMonths = getAvailableMonths(year);
+    if (selectedMonth >= availableMonths) {
+      setSelectedMonth(availableMonths - 1);
     }
   };
 

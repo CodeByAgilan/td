@@ -4,85 +4,71 @@
   padding: 20px;
 }
 
-.analytics-header {
-  margin-bottom: 20px;
-}
-
 .analytics-header h1 {
   margin: 0 0 5px 0;
-  font-size: 24px;
-  color: #333;
+  font-size: 18px;
 }
 
 .analytics-header p {
   margin: 0;
+  font-size: 13px;
   color: #666;
-  font-size: 14px;
 }
 
 .analytics-section {
   background: white;
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .analytics-section h2 {
-  margin: 0 0 15px 0;
-  color: #333;
-  font-size: 18px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
-/* Yearly Summary */
 .yearly-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .year-card {
   background: #f5f5f5;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
+  font-size: 12px;
 }
 
 .year-label {
-  font-size: 14px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .year-amount {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .year-amount.positive {
-  color: #28a745;
+  color: green;
 }
 
 .year-amount.negative {
-  color: #dc3545;
+  color: red;
 }
 
-.year-desc {
-  font-size: 12px;
-  color: #666;
-}
-
-/* Monthly Chart */
 .monthly-chart {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  gap: 5px;
-  height: 200px;
-  padding: 10px 0;
+  gap: 3px;
+  height: 150px;
+  padding: 10px;
   border: 1px solid #ddd;
   background: #f5f5f5;
 }
@@ -93,109 +79,100 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 5px;
+  gap: 3px;
 }
 
 .bar {
-  width: 30px;
-  background: #007bff;
+  width: 100%;
+  background: blue;
   min-height: 5px;
 }
 
 .bar.positive {
-  background: #28a745;
+  background: green;
 }
 
 .bar.negative {
-  background: #dc3545;
+  background: red;
 }
 
 .bar-label {
-  font-size: 11px;
-  color: #666;
+  font-size: 10px;
 }
 
-/* Category Breakdown */
 .category-breakdown {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .category-item {
   display: grid;
-  grid-template-columns: 150px 1fr 60px;
+  grid-template-columns: 120px 1fr 50px;
   gap: 10px;
   align-items: center;
+  font-size: 12px;
 }
 
 .category-name {
   font-weight: bold;
-  color: #333;
 }
 
 .category-amount {
-  font-weight: bold;
-  color: #dc3545;
   text-align: right;
 }
 
 .progress-bar {
   background: #ddd;
-  height: 15px;
+  height: 10px;
   border: 1px solid #ccc;
 }
 
 .progress-fill {
-  background: #28a745;
+  background: green;
   height: 100%;
 }
 
 .percentage {
   text-align: right;
-  font-weight: bold;
-  font-size: 12px;
-  color: #666;
+  font-size: 11px;
 }
 
-/* Metrics Grid */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .metric-card {
   background: #f5f5f5;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
+  font-size: 12px;
 }
 
 .metric-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 .metric-label {
-  font-size: 12px;
-  color: #666;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 11px;
+  margin-bottom: 5px;
 }
 
 .metric-value {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
-  color: #333;
 }
 
 .metric-value.income {
-  color: #28a745;
+  color: green;
 }
 
 .metric-value.expense {
-  color: #dc3545;
+  color: red;
 }
 
 @media (max-width: 768px) {

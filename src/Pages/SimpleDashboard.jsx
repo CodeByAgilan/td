@@ -41,7 +41,6 @@ export default function SimpleDashboard() {
     <div className="dashboard">
       <h2>Dashboard</h2>
 
-      {/* Summary Section */}
       <div className="summary">
         <div className="stat-box">
           <h3>Total Spent</h3>
@@ -57,7 +56,6 @@ export default function SimpleDashboard() {
         </div>
       </div>
 
-      {/* Budget Setting */}
       <div className="section">
         <h2>Set Monthly Budget</h2>
         <div className="input-group">
@@ -70,8 +68,7 @@ export default function SimpleDashboard() {
           <button onClick={handleSetBudget}>Update Budget</button>
         </div>
       </div>
-
-      {/* Add Expense */}
+    
       <div className="section">
         <h2>Add Expense</h2>
         <div className="form">
@@ -96,7 +93,7 @@ export default function SimpleDashboard() {
         </div>
       </div>
 
-      {/* Filter by Category */}
+
       <div className="section">
         <h2>Filter by Category</h2>
         <div className="filters">
@@ -119,7 +116,7 @@ export default function SimpleDashboard() {
         <p className="filtered-total">Total: ₹{totalSpent.toFixed(2)}</p>
       </div>
 
-      {/* Expenses List */}
+ 
       <div className="section">
         <h2>Expenses ({filteredExpenses.length})</h2>
         {filteredExpenses.length === 0 ? (

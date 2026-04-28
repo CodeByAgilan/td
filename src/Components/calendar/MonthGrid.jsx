@@ -11,7 +11,7 @@ import {
   isMonthDisabled,
   formatDate,
 } from '../../utils/dateHelpers';
-import { getMonthlyTotals } from '../../utils/expenseHelpers';
+import { getMonthlyTotals, getExpensesForDate, getDailyTotals } from '../../utils/expenseHelpers';
 import './MonthGrid.css';
 
 const MonthGrid = () => {
@@ -29,7 +29,6 @@ const MonthGrid = () => {
 
   const handleDateClick = (dateStr) => {
     setSelectedDate(dateStr);
-    setIsModalOpen(true);
   };
 
   const handleMonthClick = (month) => {
@@ -55,7 +54,7 @@ const MonthGrid = () => {
       <div className="calendar-wrapper">
         <YearSelector />
 
-        {/* Month Navigation */}
+       
         <div className="month-nav">
           <button 
             onClick={handlePrevMonth} 
@@ -74,25 +73,23 @@ const MonthGrid = () => {
           </button>
         </div>
 
-        {/* Month Summary */}
         <div className="month-summary">
           <div className="summary-card income">
             <span className="label">Total Income</span>
-            <span className="amount">${monthTotals.income.toFixed(2)}</span>
+            <span className="amount">₹{monthTotals.income.toFixed(2)}</span>
           </div>
           <div className="summary-card expense">
             <span className="label">Total Expenses</span>
-            <span className="amount">${monthTotals.expense.toFixed(2)}</span>
+            <span className="amount">₹{monthTotals.expense.toFixed(2)}</span>
           </div>
           <div className="summary-card balance">
             <span className="label">Balance</span>
             <span className="amount" style={{ color: monthTotals.balance >= 0 ? '#10b981' : '#ef4444' }}>
-              ${monthTotals.balance.toFixed(2)}
+              ₹{monthTotals.balance.toFixed(2)}
             </span>
           </div>
         </div>
 
-        {/* Month Selection Tabs */}
         <div className="month-tabs">
           {previousMonths.map(month => (
             <button
@@ -117,21 +114,20 @@ const MonthGrid = () => {
           ))}
         </div>
 
-        {/* Calendar Grid */}
         <div className="calendar-grid">
-          {/* Weekday Headers */}
+
           <div className="weekday-header">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
               <div key={day} className="weekday">{day}</div>
             ))}
           </div>
 
-          {/* Empty cells for days before month starts */}
+
           {Array.from({ length: firstDay }).map((_, i) => (
             <div key={`empty-${i}`} className="calendar-day empty"></div>
           ))}
 
-          {/* Days of the month */}
+
           {Array.from({ length: daysInMonth }).map((_, i) => (
             <CalendarDay
               key={i}
@@ -143,13 +139,12 @@ const MonthGrid = () => {
             />
           ))}
 
-          {/* Empty cells for days after month ends */}
+
           {Array.from({ length: 42 - firstDay - daysInMonth }).map((_, i) => (
             <div key={`empty-after-${i}`} className="calendar-day empty"></div>
           ))}
         </div>
 
-        {/* View Transactions Button */}
         <div className="action-buttons">
           <button 
             className="btn-view-transactions"
@@ -158,6 +153,66 @@ const MonthGrid = () => {
             {showExpenseList ? 'Hide Transactions' : 'View Transactions'}
           </button>
         </div>
+
+        {selectedDate && (
+          <div className="selected-date-section">
+            <h3>{new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</h3>
+            
+            {(() => {
+              const dateTotals = getDailyTotals(expenses, selectedDate);
+              const dateExpenses = getExpensesForDate(expenses, selectedDate);
+              
+              return (
+                <>
+                  <div className="date-summary">
+                    <div className="date-summary-card income">
+                      <span className="label">Income</span>
+                      <span className="amount">₹{dateTotals.income.toFixed(2)}</span>
+                    </div>
+                    <div className="date-summary-card expense">
+                      <span className="label">Expenses</span>
+                      <span className="amount">₹{dateTotals.expense.toFixed(2)}</span>
+                    </div>
+                    <div className="date-summary-card balance">
+                      <span className="label">Balance</span>
+                      <span className="amount" style={{ color: (dateTotals.income - dateTotals.expense) >= 0 ? '#10b981' : '#ef4444' }}>
+                        ₹{(dateTotals.income - dateTotals.expense).toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {dateExpenses.length > 0 ? (
+                    <div className="date-transactions">
+                      <h4>Transactions</h4>
+                      <div className="transactions-list">
+                        {dateExpenses.map(exp => (
+                          <div key={exp.id} className={`transaction-item ${exp.type}`}>
+                            <div className="transaction-info">
+                              <span className="category">{exp.category}</span>
+                              <span className="description">{exp.description}</span>
+                            </div>
+                            <span className={`amount ${exp.type}`}>
+                              {exp.type === 'income' ? '+' : '-'}₹{exp.amount.toFixed(2)}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="no-transactions">No transactions for this date</div>
+                  )}
+
+                  <button 
+                    className="btn-add-transaction"
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    + Add Transaction
+                  </button>
+                </>
+              );
+            })()}
+          </div>
+        )}
 
         {showExpenseList && <ExpenseList year={selectedYear} month={selectedMonth} />}
       </div>

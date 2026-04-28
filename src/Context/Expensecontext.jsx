@@ -4,24 +4,22 @@ import { sampleExpenses } from '../data/sampleData';
 const ExpenseContext = createContext();
 
 export const ExpenseProvider = ({ children }) => {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(() => {
+    const savedExpenses = localStorage.getItem('expenses');
+    if (savedExpenses) {
+      try {
+        return JSON.parse(savedExpenses);
+      } catch (e) {
+        console.error('Error parsing saved expenses:', e);
+      }
+    }
+    return sampleExpenses;
+  });
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [monthlyBudget, setMonthlyBudget] = useState(3000);
 
-  // Initialize expenses from localStorage or use sample data
-  useEffect(() => {
-    const savedExpenses = localStorage.getItem('expenses');
-    if (savedExpenses) {
-      setExpenses(JSON.parse(savedExpenses));
-    } else {
-      setExpenses(sampleExpenses);
-      localStorage.setItem('expenses', JSON.stringify(sampleExpenses));
-    }
-  }, []);
-
-  // Save expenses to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses));
   }, [expenses]);

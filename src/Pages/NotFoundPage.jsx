@@ -14,19 +14,19 @@ const NotFoundPage = () => {
           <h3>Here are some helpful links:</h3>
           <div className="link-buttons">
             <Link to="/" className="link-btn home-btn">
-              🏠 Back to Dashboard
+               Back to Dashboard
             </Link>
             <Link to="/calendar" className="link-btn calendar-btn">
-              📅 Go to Calendar
+               Go to Calendar
             </Link>
             <Link to="/analytics" className="link-btn analytics-btn">
-              📈 View Analytics
+               View Analytics
             </Link>
           </div>
         </div>
 
         <div className="error-illustration">
-          🚫
+          
         </div>
       </div>
     </div>

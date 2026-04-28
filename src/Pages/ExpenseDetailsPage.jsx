@@ -50,7 +50,7 @@ const ExpenseDetailsPage = () => {
               </div>
             </div>
             <div className={`amount-display ${expense.type}`}>
-              {expense.type === 'income' ? '+' : '-'}${expense.amount.toFixed(2)}
+              {expense.type === 'income' ? '+' : '-'}₹{expense.amount.toFixed(2)}
             </div>
           </div>
 
@@ -72,7 +72,7 @@ const ExpenseDetailsPage = () => {
 
             <div className="detail-item">
               <label>Amount</label>
-              <p className="amount">${expense.amount.toFixed(2)}</p>
+              <p className="amount">₹{expense.amount.toFixed(2)}</p>
             </div>
 
             <div className="detail-item">
@@ -93,18 +93,18 @@ const ExpenseDetailsPage = () => {
               className="btn-edit"
               onClick={() => setIsEditModalOpen(true)}
             >
-              ✎ Edit Transaction
+              Edit Transaction
             </button>
             <button 
               className="btn-delete"
               onClick={handleDelete}
             >
-              🗑️ Delete Transaction
+               Delete Transaction
             </button>
           </div>
         </div>
 
-        {/* Additional Info */}
+
         <div className="additional-info">
           <h3>Transaction Details</h3>
           <ul>

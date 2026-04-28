@@ -26,7 +26,7 @@ const ExpenseCard = ({ expense }) => {
               </div>
             </div>
             <span className={`amount ${expense.type}`}>
-              {expense.type === 'income' ? '+' : '-'}${expense.amount.toFixed(2)}
+              {expense.type === 'income' ? '+' : '-'}₹{expense.amount.toFixed(2)}
             </span>
           </div>
 
@@ -48,7 +48,7 @@ const ExpenseCard = ({ expense }) => {
                 }}
                 title="Edit"
               >
-                
+                Edit
               </button>
               <button 
                 className="btn-delete"
@@ -59,7 +59,7 @@ const ExpenseCard = ({ expense }) => {
                 }}
                 title="Delete"
               >
-                
+                Delete
               </button>
             </div>
           </div>

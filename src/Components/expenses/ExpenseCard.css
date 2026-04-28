@@ -1,88 +1,65 @@
 .expense-card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .expense-card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 15px;
+  border: 1px solid #ccc;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .expense-card:hover {
-  background: #f9f9f9;
-}
-
-.expense-card.expense {
-  border-left: 4px solid #dc3545;
-}
-
-.expense-card.income {
-  border-left: 4px solid #28a745;
+  background: #f5f5f5;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 15px;
-}
-
-.category-info {
-  display: flex;
-  flex: 1;
-}
-
-.category-details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 
 .category-name {
   font-weight: bold;
-  color: #333;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .card-date {
-  font-size: 12px;
+  font-size: 11px;
   color: #999;
 }
 
 .amount {
   font-weight: bold;
-  font-size: 16px;
-  text-align: right;
+  font-size: 14px;
 }
 
 .amount.expense {
-  color: #dc3545;
+  color: red;
 }
 
 .amount.income {
-  color: #28a745;
+  color: green;
 }
 
 .card-description {
-  padding: 10px;
+  padding: 5px;
   background: #f5f5f5;
-  border-radius: 3px;
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
+  font-size: 11px;
+  padding-top: 5px;
   border-top: 1px solid #eee;
-  font-size: 12px;
 }
 
 .payment-method {
@@ -96,17 +73,21 @@
 
 .btn-edit,
 .btn-delete {
-  background: none;
-  border: none;
+  background: #f0f0f0;
+  border: 1px solid #999;
+  padding: 3px 6px;
   cursor: pointer;
-  font-size: 16px;
-  padding: 5px;
+  font-size: 11px;
 }
 
 .btn-edit:hover {
-  color: #007bff;
+  background: #e0e0e0;
+}
+
+.btn-edit:hover {
+  background: #e0e0e0;
 }
 
 .btn-delete:hover {
-  color: #dc3545;
+  background: #e0e0e0;
 }

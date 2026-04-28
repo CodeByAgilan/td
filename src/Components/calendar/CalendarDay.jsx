@@ -30,13 +30,13 @@ const CalendarDay = ({ year, month, day, isCurrentMonth, onDateClick }) => {
       {isCurrentMonth && (dayTotals.income > 0 || dayTotals.expense > 0) && (
         <div className="day-indicators">
           {hasIncome && (
-            <div className="indicator income-indicator" title={`Income: $${dayTotals.income}`}>
-              <span className="amount">${dayTotals.income}</span>
+            <div className="indicator income-indicator" title={`Income: ₹${dayTotals.income}`}>
+              <span className="amount">₹{dayTotals.income}</span>
             </div>
           )}
           {hasExpense && (
-            <div className="indicator expense-indicator" title={`Expense: $${dayTotals.expense}`}>
-              <span className="amount">${dayTotals.expense}</span>
+            <div className="indicator expense-indicator" title={`Expense: ₹${dayTotals.expense}`}>
+              <span className="amount">₹{dayTotals.expense}</span>
             </div>
           )}
         </div>

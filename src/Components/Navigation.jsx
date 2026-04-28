@@ -25,6 +25,14 @@ export default function Navigation() {
               Calendar
             </Link>
           </li>
+          <li>
+            <Link 
+              to="/analytics" 
+              className={location.pathname === '/analytics' ? 'nav-link active' : 'nav-link'}
+            >
+              Analytics
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

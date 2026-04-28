@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ExpenseProvider } from './Context/Expensecontext';
-import SimpleDashboard from './Pages/SimpleDashboard';
-import SimpleCalendar from './Pages/SimpleCalendar';
+import DashboardPage from './Pages/DashboardPage';
+import CalendarPage from './Pages/CalendarPage';
+import AnalyticsPage from './Pages/AnalyticsPage';
+import ExpenseDetailsPage from './Pages/ExpenseDetailsPage';
+import NotFoundPage from './Pages/NotFoundPage';
 import Navigation from './Components/Navigation';
 import './App.css';
 
@@ -12,8 +15,11 @@ function App() {
         <div className="app-container">
           <Navigation />
           <Routes>
-            <Route path="/" element={<SimpleDashboard />} />
-            <Route path="/calendar" element={<SimpleCalendar />} />
+            <Route path="/" element={<DashboardPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
+            <Route path="/expenses/:id" element={<ExpenseDetailsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </ExpenseProvider>
@@ -22,32 +28,6 @@ function App() {
 }
 
 export default App;
-//      };
-
-
-//   const renderTileContent = ({ date, view }) => {
-//     if (view === "month") {
-//       let dateKey = formatDate(date) || 0;
-//       let income = incomeData[dateKey] || 0;
-
-
-
-//       return (
-//         <div style={{ fontSize: "0.7rem", color: income > 0 ? "green" : "gray" }}>
-//           ₹{income}
-//         </div>
-//       );
-//     }
-//     return null;
-//   };
-
-
-//   return (
-//     <div id="ii">
-
-//        <div id="ModelPopPop">
-
-//             <form action="">
                 
               
 //             </form>
