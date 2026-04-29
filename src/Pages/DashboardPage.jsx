@@ -1,170 +1,125 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useExpenseContext } from '../Context/Expensecontext';
-import { getTotalIncome, getTotalExpenses, getRecentTransactions } from '../utils/expenseHelpers';
-import ExpenseCard from '../Components/expenses/ExpenseCard';
-import './DashboardPage.css';
+export default function DashboardPage() {
+  return null;
+}
 
-const DashboardPage = () => {
-  const { expenses, monthlyBudget, setMonthlyBudget } = useExpenseContext();
-  const [filterType, setFilterType] = useState('all'); 
-  const [filterCategory, setFilterCategory] = useState('all'); 
+//       <div className="overview-section">
+//         <div className="overview-card income-card">
+//           <div className="card-icon"></div>
+//           <div className="card-content">
+//             <span className="card-label">Total Income</span>
+//             <span className="card-amount">₹{totalIncome.toFixed(2)}</span>
+//           </div>
+//         </div>
 
-  const totalIncome = getTotalIncome(expenses);
-  const totalExpenses = getTotalExpenses(expenses);
-  const balance = totalIncome - totalExpenses;
-  const allRecentTransactions = getRecentTransactions(expenses, 50);
+//         <div className="overview-card expense-card">
+//           <div className="card-icon"></div>
+//           <div className="card-content">
+//             <span className="card-label">Total Expenses</span>
+//             <span className="card-amount">₹{totalExpenses.toFixed(2)}</span>
+//           </div>
+//         </div>
 
+//         <div className={`overview-card balance-card ${balance >= 0 ? 'positive' : 'negative'}`}>
+//           <div className="card-icon"></div>
+//           <div className="card-content">
+//             <span className="card-label">Remaining Balance</span>
+//             <span className="card-amount">₹{balance.toFixed(2)}</span>
+//           </div>
+//         </div>
+//       </div>
 
-  const categories = [...new Set(expenses.map(exp => exp.category).filter(Boolean))];
+//       <div className="budget-section">
+//         <h3>Monthly Budget</h3>
+//         <div className="budget-input">
+//           <label>Budget Limit (₹):</label>
+//           <input
+//             type="number"
+//             value={budgetInput}
+//             onChange={handleBudgetChange}
+//             min="0"
+//             step="50"
+//           />
+//           <button onClick={handleSetBudget} className="update-btn">Update</button>
+//         </div>
 
+//         <div className={`budget-status ${budgetExceeded ? 'exceeded' : 'ok'}`}>
+//           <div className="budget-info">
+//             <span className="current-month">Current Month Expenses: ₹{monthTotal.toFixed(2)}</span>
+//             <span className="budget-limit">Budget: ₹{monthlyBudget.toFixed(2)}</span>
+//           </div>
+//           {budgetExceeded && (
+//             <div className="budget-warning">
+//                Budget Exceeded by ₹{(monthTotal - monthlyBudget).toFixed(2)}
+//             </div>
+//           )}
+//         </div>
+//       </div>
 
-  const recentTransactions = allRecentTransactions.filter(transaction => {
-    const typeMatch = filterType === 'all' || transaction.type === filterType;
-    const categoryMatch = filterCategory === 'all' || transaction.category === filterCategory;
-    return typeMatch && categoryMatch;
-  }).slice(0, 5);
-
-  const currentMonth = new Date().getMonth();
-  const currentYear = new Date().getFullYear();
-  const monthExpenses = expenses.filter(exp => {
-    const expDate = new Date(exp.date);
-    return expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear && exp.type === 'expense';
-  });
-  const monthTotal = monthExpenses.reduce((sum, exp) => sum + exp.amount, 0);
-  const budgetExceeded = monthTotal > monthlyBudget;
-
-  const handleBudgetChange = (e) => {
-    setMonthlyBudget(parseFloat(e.target.value) || 0);
-  };
-
-  return (
-    <div className="dashboard-page">
-      {/* Header */}
-      <div className="dashboard-header">
-        <h1> Personal Expense Tracker</h1>
-        <p>Track your daily financial activities</p>
-      </div>
-
-      <div className="overview-section">
-        <div className="overview-card income-card">
-          <div className="card-icon"></div>
-          <div className="card-content">
-            <span className="card-label">Total Income</span>
-            <span className="card-amount">₹{totalIncome.toFixed(2)}</span>
-          </div>
-        </div>
-
-        <div className="overview-card expense-card">
-          <div className="card-icon"></div>
-          <div className="card-content">
-            <span className="card-label">Total Expenses</span>
-            <span className="card-amount">₹{totalExpenses.toFixed(2)}</span>
-          </div>
-        </div>
-
-        <div className={`overview-card balance-card ${balance >= 0 ? 'positive' : 'negative'}`}>
-          <div className="card-icon"></div>
-          <div className="card-content">
-            <span className="card-label">Remaining Balance</span>
-            <span className="card-amount">₹{balance.toFixed(2)}</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="budget-section">
-        <h3>Monthly Budget</h3>
-        <div className="budget-input">
-          <label>Budget Limit (₹):</label>
-          <input
-            type="number"
-            value={monthlyBudget}
-            onChange={handleBudgetChange}
-            min="0"
-            step="50"
-          />
-        </div>
-
-        <div className={`budget-status ${budgetExceeded ? 'exceeded' : 'ok'}`}>
-          <div className="budget-info">
-            <span className="current-month">Current Month Expenses: ₹{monthTotal.toFixed(2)}</span>
-            <span className="budget-limit">Budget: ₹{monthlyBudget.toFixed(2)}</span>
-          </div>
-          {budgetExceeded && (
-            <div className="budget-warning">
-               Budget Exceeded by ₹{(monthTotal - monthlyBudget).toFixed(2)}
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="recent-transactions-section">
-        <h3>Recent Transactions</h3>
+//       <div className="recent-transactions-section">
+//         <h3>Recent Transactions</h3>
         
 
-        <div className="filter-controls">
-          <div className="filter-group">
-            <label>Type:</label>
-            <div className="filter-buttons">
-              <button 
-                className={`filter-btn ${filterType === 'all' ? 'active' : ''}`}
-                onClick={() => setFilterType('all')}
-              >
-                All
-              </button>
-              <button 
-                className={`filter-btn ${filterType === 'income' ? 'active' : ''}`}
-                onClick={() => setFilterType('income')}
-              >
-                Income
-              </button>
-              <button 
-                className={`filter-btn ${filterType === 'expense' ? 'active' : ''}`}
-                onClick={() => setFilterType('expense')}
-              >
-                Expense
-              </button>
-            </div>
-          </div>
+//         <div className="filter-controls">
+//           <div className="filter-group">
+//             <label>Type:</label>
+//             <div className="filter-buttons">
+//               <button 
+//                 className={`filter-btn ${filterType === 'all' ? 'active' : ''}`}
+//                 onClick={() => setFilterType('all')}
+//               >
+//                 All
+//               </button>
+//               <button 
+//                 className={`filter-btn ${filterType === 'income' ? 'active' : ''}`}
+//                 onClick={() => setFilterType('income')}
+//               >
+//                 Income
+//               </button>
+//               <button 
+//                 className={`filter-btn ${filterType === 'expense' ? 'active' : ''}`}
+//                 onClick={() => setFilterType('expense')}
+//               >
+//                 Expense
+//               </button>
+//             </div>
+//           </div>
 
-          {categories.length > 0 && (
-            <div className="filter-group">
-              <label>Category:</label>
-              <select 
-                className="filter-select"
-                value={filterCategory}
-                onChange={(e) => setFilterCategory(e.target.value)}
-              >
-                <option value="all">All Categories</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-        </div>
+//           {categories.length > 0 && (
+//             <div className="filter-group">
+//               <label>Category:</label>
+//               <select 
+//                 className="filter-select"
+//                 value={filterCategory}
+//                 onChange={(e) => setFilterCategory(e.target.value)}
+//               >
+//                 <option value="all">All Categories</option>
+//                 {categories.map(category => (
+//                   <option key={category} value={category}>
+//                     {category}
+//                   </option>
+//                 ))}
+//               </select>
+//             </div>
+//           )}
+//         </div>
 
-        <div className="transactions-grid">
-          {recentTransactions.length > 0 ? (
-            recentTransactions.map(transaction => (
-              <ExpenseCard key={transaction.id} expense={transaction} />
-            ))
-          ) : (
-            <div className="empty-state">
-              <span>No transactions match the selected filters.</span>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
+//         <div className="transactions-grid">
+//           {recentTransactions.length > 0 ? (
+//             recentTransactions.map(transaction => (
+//               <ExpenseCard key={transaction.id} expense={transaction} />
+//             ))
+//           ) : (
+//             <div className="empty-state">
+//               <span>No transactions match the selected filters.</span>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default DashboardPage;
-
-
+// export default DashboardPage;
 
 
 
@@ -174,23 +129,25 @@ export default DashboardPage;
 
 
 
-// export default function Apps() {
-//  return (
-//    <BrowserRouter>
-//      <nav>
-//        <Link to="/">Home</Link> |{" "}
-//        <Link to="/about">About</Link> |{" "}
-//        <Link to="/contact">Contact</Link>
-//        <Link to="/CAL">CalendarGfg</Link>
-//      </nav>
 
-//      <Routes>
-//        <Route path="/" element={<Home />} />
-//        <Route path="/about" element={<About />} />
-//        <Route path="/contact" element={<Contact />} />
-//        <Route path="/CAL" element={<CalendarGfg/>} />
-//        <Route path="*" element={<Home/>}/>
-//      </Routes>
-//    </BrowserRouter>
-//  );
-// }
+
+// // export default function Apps() {
+// //  return (
+// //    <BrowserRouter>
+// //      <nav>
+// //        <Link to="/">Home</Link> |{" "}
+// //        <Link to="/about">About</Link> |{" "}
+// //        <Link to="/contact">Contact</Link>
+// //        <Link to="/CAL">CalendarGfg</Link>
+// //      </nav>
+
+// //      <Routes>
+// //        <Route path="/" element={<Home />} />
+// //        <Route path="/about" element={<About />} />
+// //        <Route path="/contact" element={<Contact />} />
+// //        <Route path="/CAL" element={<CalendarGfg/>} />
+// //        <Route path="*" element={<Home/>}/>
+// //      </Routes>
+// //    </BrowserRouter>
+// //  );
+// // }

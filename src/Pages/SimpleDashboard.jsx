@@ -69,13 +69,13 @@ export default function SimpleDashboard() {
         </div>
       </div>
     
-      <div className="section">
+      {/* <div className="section">
         <h2>Add Expense</h2>
         <div className="form">
           <input
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.t arget.value)}
             placeholder="Description"
           />
           <input
@@ -91,7 +91,7 @@ export default function SimpleDashboard() {
           </select>
           <button onClick={handleAddExpense}>Add</button>
         </div>
-      </div>
+      </div> */}
 
 
       <div className="section">

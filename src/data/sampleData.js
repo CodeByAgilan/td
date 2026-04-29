@@ -1,14 +1,10 @@
-// Sample expense and income data for 2024-2026
 export const sampleExpenses = [
-  // 2024 Data
-  // January 2024
   { id: 1, date: '2024-01-05', category: 'Food', type: 'expense', amount: 450, description: 'Groceries', paymentMethod: 'Debit Card' },
   { id: 2, date: '2024-01-10', category: 'Transport', type: 'expense', amount: 200, description: 'Gas', paymentMethod: 'Cash' },
   { id: 3, date: '2024-01-15', category: 'Salary', type: 'income', amount: 5200, description: 'Monthly Salary', paymentMethod: 'Bank Transfer' },
   { id: 4, date: '2024-01-20', category: 'Entertainment', type: 'expense', amount: 300, description: 'Movie & Dinner', paymentMethod: 'Credit Card' },
   { id: 5, date: '2024-01-25', category: 'Utilities', type: 'expense', amount: 150, description: 'Electricity Bill', paymentMethod: 'Online' },
 
-  // February 2024
   { id: 6, date: '2024-02-05', category: 'Food', type: 'expense', amount: 500, description: 'Groceries', paymentMethod: 'Debit Card' },
   { id: 7, date: '2024-02-10', category: 'Rent', type: 'expense', amount: 1500, description: 'Monthly Rent', paymentMethod: 'Bank Transfer' },
   { id: 8, date: '2024-02-15', category: 'Salary', type: 'income', amount: 5200, description: 'Monthly Salary', paymentMethod: 'Bank Transfer' },

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ExpenseProvider } from './Context/Expensecontext';
-import DashboardPage from './Pages/DashboardPage';
+import SimpleDashboard from './Pages/SimpleDashboard';
 import CalendarPage from './Pages/CalendarPage';
 import AnalyticsPage from './Pages/AnalyticsPage';
 import ExpenseDetailsPage from './Pages/ExpenseDetailsPage';
@@ -15,7 +15,7 @@ function App() {
         <div className="app-container">
           <Navigation />
           <Routes>
-            <Route path="/" element={<DashboardPage />} />
+            <Route path="/" element={<SimpleDashboard />} />
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/expenses/:id" element={<ExpenseDetailsPage />} />
@@ -28,37 +28,4 @@ function App() {
 }
 
 export default App;
-                
-              
-//             </form>
-         
-
-//        </div>
-
-//         <div>
-
-//               <div>
-//                     <h2>Monthly Income Calendar</h2>
-
-//                   <Calendar
-//                     onChange={onChange}
-//                     value={selectedDate}
-//                     tileContent={renderTileContent}
-//                     maxDate={new Date()}
-//                   />
-
-//                   <div style={{ marginTop: "10px" }}>
-//                     Selected Date: {selectedDate.toDateString()}
-//                     <br />
-//                     Income: ₹{incomeData[formatDate(selectedDate)] || 0}
-//                   </div>
-//               </div>
-         
-//         </div>
-
-//     </div>
-//   );
-// }
-
-
 

@@ -4,7 +4,7 @@ import { getMonthlyTotals } from '../utils/expenseHelpers';
 import './AnalyticsPage.css';
 
 const AnalyticsPage = () => {
-  const { expenses } = useExpenseContext();
+  const { expenses, selectedYear, selectedMonth } = useExpenseContext();
 
   const monthlyData = useMemo(() => {
     const data = {};
@@ -31,7 +31,15 @@ const AnalyticsPage = () => {
     .filter(([key]) => key.startsWith('2026'))
     .reduce((sum, [, data]) => sum + data.income - data.expense, 0);
 
-
+  const categoryBreakdown = useMemo(() => {
+    const categories = {};
+    expenses.forEach(exp => {
+      if (exp.type === 'expense') {
+        categories[exp.category] = (categories[exp.category] || 0) + exp.amount;
+      }
+    });
+    return categories;
+  }, [expenses]);
 
   return (
     <div className="analytics-page">
@@ -66,7 +74,31 @@ const AnalyticsPage = () => {
 
 
       <div className="analytics-section">
-        <h2> Key Metrics</h2>
+        <h2> Monthly Breakdown ({selectedYear})</h2>
+        <div className="monthly-list">
+          {months.map((month, index) => {
+            const key = `${selectedYear}-${String(index + 1).padStart(2, '0')}`;
+            const data = monthlyData[key] || { income: 0, expense: 0, balance: 0 };
+            
+            return (
+              <div key={month} className="monthly-item">
+                <div className="month-name">{month}</div>
+                <div className="month-data">
+                  <span className="income">Income: ₹{data.income.toFixed(2)}</span>
+                  <span className="expense">Expense: ₹{data.expense.toFixed(2)}</span>
+                  <span className={`balance ${data.balance >= 0 ? 'positive' : 'negative'}`}>
+                    Balance: ₹{data.balance.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+
+      <div className="analytics-section">
+        <h2>Key Metrics</h2>
         <div className="metrics-grid">
           <div className="metric-card">
             <div className="metric-icon"></div>
@@ -79,7 +111,6 @@ const AnalyticsPage = () => {
             </div>
           </div>
           <div className="metric-card">
-            <div className="metric-icon">💸</div>
             <div className="metric-label">Total Expenses</div>
             <div className="metric-value expense">
               ₹{expenses
@@ -89,6 +120,7 @@ const AnalyticsPage = () => {
             </div>
           </div>
           <div className="metric-card">
+            <div className="metric-icon">📊</div>
             <div className="metric-label">Avg Monthly Income</div>
             <div className="metric-value">
               ₹{(expenses
@@ -98,6 +130,7 @@ const AnalyticsPage = () => {
             </div>
           </div>
           <div className="metric-card">
+            <div className="metric-icon"></div>
             <div className="metric-label">Avg Monthly Expense</div>
             <div className="metric-value">
               ₹{(expenses

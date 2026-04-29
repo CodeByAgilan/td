@@ -153,6 +153,10 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
 }
 
 .expense-item {
@@ -212,7 +216,7 @@ button:hover {
   font-size: 14px;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
   .dashboard {
     padding: 10px;
