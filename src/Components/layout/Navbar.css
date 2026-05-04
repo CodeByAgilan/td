@@ -1,6 +1,6 @@
 .navbar {
-  background: white;
-  border-bottom: 1px solid #ddd;
+  background: #0066cc;
+  border-bottom: 1px solid #0052a3;
   padding: 15px 20px;
   position: sticky;
   top: 0;
@@ -18,7 +18,7 @@
 .navbar-logo {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: white;
   text-decoration: none;
 }
 
@@ -37,18 +37,18 @@
 
 .nav-link {
   text-decoration: none;
-  color: #666;
+  color: white;
   font-weight: 500;
   padding: 8px 0;
 }
 
 .nav-link:hover {
-  color: #333;
+  color: #e0e0e0;
 }
 
 .nav-link.active {
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
+  color: #ffff99;
+  border-bottom: 2px solid #ffff99;
 }
 
 @media (max-width: 768px) {

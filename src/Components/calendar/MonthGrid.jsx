@@ -51,6 +51,7 @@ const MonthGrid = () => {
               onChange={handleDateClick}
               className="custom-calendar"
               tileClassName="calendar-tile"
+              maxDate={new Date()}
             />
           </div>
 

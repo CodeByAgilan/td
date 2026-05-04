@@ -110,7 +110,7 @@
 
 .calendar-day.selected {
   background-color: #3498db;
-  color: white;
+  color: black;
   border-color: #2980b9;
 }
 
@@ -133,8 +133,8 @@
 }
 
 .calendar-day.selected .day-total {
-  color: white;
-  border-top-color: rgba(255, 255, 255, 0.3);
+  color: black;
+  border-top-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Date Details Section */

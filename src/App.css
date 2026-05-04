@@ -13,13 +13,14 @@ body {
 button {
   font-family: Arial, sans-serif;
   padding: 8px 12px;
-  border: 1px solid #999;
-  background: #f0f0f0;
+  border: 1px solid #0066cc;
+  background: #0066cc;
+  color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background: #e0e0e0;
+  background: #0052a3;
 }
 
 input,

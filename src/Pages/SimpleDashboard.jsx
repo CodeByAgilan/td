@@ -27,7 +27,7 @@ export default function SimpleDashboard() {
   };
 
   const handleSetBudget = () => {
-    setMonthlyBudget(parseFloat(budgetInput));
+    setMonthlyBudget(parseFloat(budgetInput) || 0);
   };
 
   const filteredExpenses = filterCategory === 'All' 

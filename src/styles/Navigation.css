@@ -1,8 +1,8 @@
 /* Navigation Navbar */
 .navbar {
-  background: #333;
+  background: #0066cc;
   padding: 10px 20px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #0052a3;
 }
 
 .nav-content {
@@ -34,5 +34,5 @@
 
 
 .nav-link.active {
-  background: #666;
+  background: #004fa3;
 }

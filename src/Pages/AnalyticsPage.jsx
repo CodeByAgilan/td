@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useExpenseContext } from '../Context/Expensecontext';
 import { getMonthlyTotals } from '../utils/expenseHelpers';
 import './AnalyticsPage.css';
@@ -75,25 +76,33 @@ const AnalyticsPage = () => {
 
       <div className="analytics-section">
         <h2> Monthly Breakdown ({selectedYear})</h2>
-        <div className="monthly-list">
-          {months.map((month, index) => {
-            const key = `${selectedYear}-${String(index + 1).padStart(2, '0')}`;
-            const data = monthlyData[key] || { income: 0, expense: 0, balance: 0 };
-            
-            return (
-              <div key={month} className="monthly-item">
-                <div className="month-name">{month}</div>
-                <div className="month-data">
-                  <span className="income">Income: ₹{data.income.toFixed(2)}</span>
-                  <span className="expense">Expense: ₹{data.expense.toFixed(2)}</span>
-                  <span className={`balance ${data.balance >= 0 ? 'positive' : 'negative'}`}>
-                    Balance: ₹{data.balance.toFixed(2)}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+        
+        {/* Bar Chart */}
+        <div className="chart-container">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart
+              data={months.map((month, index) => {
+                const key = `${selectedYear}-${String(index + 1).padStart(2, '0')}`;
+                const data = monthlyData[key] || { income: 0, expense: 0, balance: 0 };
+                return {
+                  name: month,
+                  Income: parseFloat(data.income.toFixed(2)),
+                  Expense: parseFloat(data.expense.toFixed(2))
+                };
+              })}
+              margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip formatter={(value) => `₹${value.toFixed(2)}`} />
+              <Legend />
+              <Bar dataKey="Income" fill="#10b981" />
+              <Bar dataKey="Expense" fill="#ef4444" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
+
       </div>
 
 
@@ -120,7 +129,6 @@ const AnalyticsPage = () => {
             </div>
           </div>
           <div className="metric-card">
-            <div className="metric-icon">📊</div>
             <div className="metric-label">Avg Monthly Income</div>
             <div className="metric-value">
               ₹{(expenses
